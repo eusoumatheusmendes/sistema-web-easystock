@@ -32,7 +32,7 @@ public class Empresa extends AbstractEntity<Long>{
     private String email;
 
     @Getter @Setter
-    @Column(length = 11, nullable = false, unique = true)
+    @Column(length = 11, nullable = false)
     private String senha;
 
 

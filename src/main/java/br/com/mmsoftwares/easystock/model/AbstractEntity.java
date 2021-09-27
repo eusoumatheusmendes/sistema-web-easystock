@@ -13,7 +13,7 @@ import java.util.Objects;
 @MappedSuperclass
 public abstract class AbstractEntity<ID extends Serializable> implements Serializable{
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
     private ID id;
 

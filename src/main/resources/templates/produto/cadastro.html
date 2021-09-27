@@ -13,7 +13,7 @@
 </head>
 <body>
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container "><a  id="logo-container" th:href="@{/}" class="brand-logo"><img class="logo" th:src="@{/imagens/ven.png}"> | easystock </a>
+    <div class="nav-wrapper container "><a  id="logo-container" th:href="@{/}" class="brand-logo"><img class="logo" th:src="@{/imagens/ven.png}"> | easystock</a>
       <ul id="nav-mobile" class="sidenav">
         <li><a href="#">Navbar Link</a></li>
       </ul>
@@ -28,7 +28,7 @@
 
       </div>
       <div class="row center">
-        <h3>Preencha os campos e simplifique o seu negócio</h3>
+        <h3>Cadastre os seus produtos</h3>
       </div>
       <br><br>
 
@@ -42,37 +42,35 @@
       <div>
         <form class="col s12">
             <div class="input-field col s6">
-              <i class="material-icons prefix">account_circle</i>
+              <i class="material-icons prefix">assignment</i>
               <input id="icon_prefix" type="text" class="validate">
-              <label for="icon_prefix">Nome Fantasia</label>
+              <label for="icon_prefix">Nome do produto</label>
             </div>
             <div class="input-field col s6">
-              <i class="material-icons prefix">business_center</i>
+              <i class="material-icons prefix">attach_money</i>
               <input id="icon_telephone" type="text" class="validate">
-              <label for="icon_telephone">Cnpj</label>
+              <label for="icon_telephone">Preço de venda</label>
             </div>
           <div class="input-field col s6">
-            <i class="material-icons prefix">phone</i>
+            <i class="material-icons prefix">exposure_plus_1</i>
             <input id="icon_telephone" type="tel" class="validate">
-            <label for="icon_telephone">Whatsapp</label>
+            <label for="icon_telephone">Quantidade em estoque</label>
           </div>
-          <div class="input-field col s6">
-            <i class="material-icons prefix">attach_money</i>
-            <input id="icon_telephone" type="tel" class="validate">
-            <label for="icon_telephone">Chave Pix</label>
+          <div class="input-field col s12">
+            <i class="material-icons prefix">widgets</i>
+            <select>
+              <option value="" disabled selected>Categoria do Produto</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+            </select>
+            <label>Categoria do Produto</label>
           </div>
-          <div class="input-field col s6">
-            <i class="material-icons prefix">email</i>
-            <input id="icon_telephone" type="text" class="validate">
-            <label for="icon_telephone">E-mail</label>
-          </div>
-          <div class="input-field col s6">
-            <i class="material-icons prefix">security</i>
-            <input id="icon_telephone" type="password" class="validate">
-            <label for="icon_telephone">Senha</label>
-          </div>
+
+          <a th:href="@{/categoria/cadastro}" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">add</i></a> Adicionar uma nova categoria
+
           <div class="center">
-          <button class="btn waves-effect waves-light" type="submit" name="action">Cadastrar
+          <button class="btn waves-effect waves-light" type="submit" name="action">Adicionar
             <i class="material-icons right">send</i>
           </button>
           </div>
@@ -118,6 +116,13 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="/js/materialize.js"></script>
   <script src="/js/init.js"></script>
+
+
+  <script>
+    $(document).ready(function(){
+      $('select').formSelect();
+    });
+  </script>
 
   </body>
 </html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -8,12 +8,12 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container "><a  id="logo-container" href="#" class="brand-logo"><img class="logo" th:src="@{/imagens/ven.png}"> | easystock</a>
+    <div class="nav-wrapper container "><a  id="logo-container" th:href="@{/}" class="brand-logo"><img class="logo" th:src="@{/imagens/ven.png}"> | easystock</a>
       <ul id="nav-mobile" class="sidenav">
         <li><a href="#">Navbar Link</a></li>
       </ul>
@@ -28,7 +28,7 @@
 
       </div>
       <div class="row center">
-        <a href="/empresa/cadastro" id="download-button" class="btn-large waves-effect waves-light blue">Iniciar</a>
+        <h3>Crie uma nova categoria</h3>
       </div>
       <br><br>
 
@@ -39,34 +39,20 @@
   <div class="container">
     <div class="section">
 
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">local_shipping</i></h2>
-            <h5 class="center">Gerencie o seu estoque</h5>
+      <div>
+        <form class="col s12">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">assignment</i>
+              <input id="icon_prefix" type="text" class="validate">
+              <label for="icon_prefix">Nome da categoria</label>
+            </div>
 
-            <p class="light"> Informatize o controle de seu estoque e abandone de vez o  papel.</p>
+          <div class="center">
+          <button class="btn waves-effect waves-light" type="submit" name="action">Criar
+            <i class="material-icons right">send</i>
+          </button>
           </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">Mantenha seus clientes por perto</h5>
-
-            <p class="light">Mantenha o cadastro de seu cliente para oferecer serviços cada vez mais personalizados.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">add_shopping_cart</i></h2>
-            <h5 class="center">Registre todos os pedidos dos clientes</h5>
-
-            <p class="light">Dê baixa automaticamente e faça a gestão eficiente de todos os pedidos em sua empresa. </p>
-          </div>
-        </div>
+        </form>
       </div>
 
     </div>
@@ -106,8 +92,15 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
+  <script src="/js/materialize.js"></script>
+  <script src="/js/init.js"></script>
+
+
+  <script>
+    $(document).ready(function(){
+      $('select').formSelect();
+    });
+  </script>
 
   </body>
 </html>
