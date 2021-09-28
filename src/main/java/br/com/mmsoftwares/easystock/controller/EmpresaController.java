@@ -1,5 +1,5 @@
 package br.com.mmsoftwares.easystock.controller;
-import br.com.mmsoftwares.easystock.dao.EmpresaDaoInterface;
+import br.com.mmsoftwares.easystock.dao.IEmpresaDao;
 import br.com.mmsoftwares.easystock.model.Empresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class EmpresaController {
 
     @Autowired
-    private EmpresaDaoInterface dao;
+    private IEmpresaDao dao;
 
     @GetMapping("/cadastro")
     public String cadastro(){

@@ -12,8 +12,8 @@ import javax.persistence.Table;
 public class Empresa extends AbstractEntity<Long>{
 
     @Getter @Setter
-    @Column(length = 100, nullable = false, unique = true)
-    private String nomeFantasia;
+    @Column(length = 100, nullable = false)
+    private String nome;
 
     @Getter @Setter
     @Column(length = 100, nullable = false, unique = true)
