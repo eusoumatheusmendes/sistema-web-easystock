@@ -1,0 +1,23 @@
+[33mcommit f62a99e620b195b57bb9261dd0fc3c1476161f70[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Matheus Mendes <=>
+Date:   Mon Sep 27 22:16:42 2021 -0300
+
+    Criação de tela para cadastro de clientes
+
+[33mcommit 8160c4dd67259d45885e507cc790560563b23ec7[m
+Author: Matheus Mendes <=>
+Date:   Mon Sep 27 19:55:53 2021 -0300
+
+    Implementação de telas iniciais para produto e categoria
+
+[33mcommit 8e0a5bec4ca604187331ef7998ca94d9e7452c06[m
+Author: Matheus Mendes <=>
+Date:   Mon Sep 27 16:12:05 2021 -0300
+
+    Implementação inicial da classe de domínio 'Produto'
+
+[33mcommit a3a7821c974d964442464ed68408ab18a42cd30b[m
+Author: Matheus Mendes <=>
+Date:   Mon Sep 27 15:52:23 2021 -0300
+
+    Fazendo as configurações iniciais das propriedades do banco de dados, entidade abstrata para o domínio e controller para a página home

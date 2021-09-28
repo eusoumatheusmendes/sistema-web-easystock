@@ -27,4 +27,10 @@ public class Produto extends AbstractEntity<Long>{
     @JoinColumn(name = "id_empresa_fk")
     private Empresa empresa;
 
+
+    @Getter @Setter
+    @ManyToOne
+    @JoinColumn(name = "id_categoria_fk")
+    private Categoria categoria;
+
 }
