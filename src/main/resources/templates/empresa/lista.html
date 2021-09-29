@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<main layout:fragment="conteudo">
+
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <br><br>
+            <div class="row center">
+            </div>
+            <div class="row center">
+                <h3>Empresas Cadastradas</h3>
+            </div>
+            <br>
+        </div>
+    </div>
+
+    <table class="responsive-table centered">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Número</th>
+            <th>E-mail</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="empresa : ${empresas}">
+                <td th:text="${empresa.nome}">Alvin</td>
+                <td th:text="${empresa.numeroDoWhatsapp}">Alvin</td>
+                <td th:text="${empresa.email}">Alvin</td>
+                <td>
+                    <a th:href="@{/empresa/editar/{id}(id = ${empresa.id})}"><i class="material-icons">edit</i></a>
+                    <a href="#"><i class="material-icons">delete</i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </main>
+  </body>
+</html>

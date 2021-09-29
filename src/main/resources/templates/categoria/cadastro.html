@@ -25,6 +25,7 @@
 
         <div>
           <form class="col s12" th:action="@{/categoria/salvar}" th:object="${categoria}" method="POST">
+              <input type="hidden" th:field="*{id}">
               <div class="input-field col s6">
                 <i class="material-icons prefix">assignment</i>
                 <input id="icon_prefix" type="text" class="validate" th:field="*{nome}">

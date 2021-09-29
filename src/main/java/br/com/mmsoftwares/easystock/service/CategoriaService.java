@@ -3,10 +3,13 @@ package br.com.mmsoftwares.easystock.service;
 import br.com.mmsoftwares.easystock.dao.ICategoriaDao;
 import br.com.mmsoftwares.easystock.model.Categoria;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.Optional;
 
+@Service
 public class CategoriaService implements ICategoriaService{
 
     @Autowired
@@ -27,12 +30,14 @@ public class CategoriaService implements ICategoriaService{
         dao.delete(categoria);
     }
 
-    @Override
+
+    @Transactional(readOnly = true)
     public Optional<Categoria> busarPorId(Long id) {
         return dao.findById(id);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Collection<Categoria> buscarTodos() {
         return dao.findAll();
     }
