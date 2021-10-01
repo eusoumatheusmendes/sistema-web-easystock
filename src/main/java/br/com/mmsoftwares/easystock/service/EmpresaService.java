@@ -21,11 +21,6 @@ public class EmpresaService implements IEmpresaService{
     }
 
     @Override
-    public void atualizar(Empresa empresa) {
-        dao.save(empresa);
-    }
-
-    @Override
     public void excluir(Empresa empresa) {
         dao.delete(empresa);
     }

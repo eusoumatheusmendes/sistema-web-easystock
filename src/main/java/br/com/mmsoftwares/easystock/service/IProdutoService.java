@@ -10,8 +10,6 @@ public interface IProdutoService{
 
     void salvar(Produto produto);
 
-    void atualizar(Produto produto);
-
     void excluir(Produto produto);
 
     Optional<Produto> buscarPorId(Long id);

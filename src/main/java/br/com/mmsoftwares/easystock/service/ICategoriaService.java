@@ -9,8 +9,6 @@ public interface ICategoriaService{
 
     void salvar(Categoria categoria);
 
-    void atualizar(Categoria categoria);
-
     void excluir(Categoria categoria);
 
     Optional<Categoria> busarPorId(Long id);

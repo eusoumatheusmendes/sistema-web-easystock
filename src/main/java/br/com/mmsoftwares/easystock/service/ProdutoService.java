@@ -22,11 +22,6 @@ public class ProdutoService implements IProdutoService{
     }
 
     @Override
-    public void atualizar(Produto produto) {
-        dao.save(produto);
-    }
-
-    @Override
     public void excluir(Produto produto) {
         dao.delete(produto);
     }

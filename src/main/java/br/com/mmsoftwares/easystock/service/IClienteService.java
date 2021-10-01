@@ -9,8 +9,6 @@ public interface IClienteService {
 
     void salvar(Cliente cliente);
 
-    void atualizar(Cliente cliente);
-
     void excluir(Cliente cliente);
 
     Optional<Cliente> buscarPorId(Long id);

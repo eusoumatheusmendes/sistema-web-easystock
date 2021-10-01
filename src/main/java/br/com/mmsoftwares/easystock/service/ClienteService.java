@@ -21,11 +21,6 @@ public class ClienteService implements IClienteService{
     }
 
     @Override
-    public void atualizar(Cliente cliente) {
-        dao.save(cliente);
-    }
-
-    @Override
     public void excluir(Cliente cliente) {
         dao.delete(cliente);
     }

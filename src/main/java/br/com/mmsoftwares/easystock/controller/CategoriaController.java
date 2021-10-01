@@ -39,4 +39,18 @@ public class CategoriaController {
         model.addAttribute(categoria);
         return "/categoria/cadastro";
     }
+
+    @GetMapping("/confirmaExclusao/{id}")
+    public String confirmaExclusao(@PathVariable("id")Categoria categoria, ModelMap model){
+        model.addAttribute(categoria);
+        return "/categoria/confirmacaoDeExclusao";
+    }
+
+    @GetMapping("/excluir/{id}")
+    public String excluir(@PathVariable("id")Categoria categoria, ModelMap model){
+        model.addAttribute(categoria);
+        service.excluir(categoria);
+        return "redirect:/categoria/lista";
+    }
+
 }

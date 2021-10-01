@@ -9,8 +9,6 @@ public interface IEmpresaService {
 
     void salvar(Empresa empresa);
 
-    void atualizar(Empresa empresa);
-
     void excluir(Empresa empresa);
 
     Optional<Empresa> buscarPorId(Long id);

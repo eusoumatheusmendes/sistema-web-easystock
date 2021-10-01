@@ -8,13 +8,16 @@
 <body>
 <main layout:fragment="conteudo">
 
+
     <div class="section no-pad-bot" id="index-banner">
+        <div style="background-color: #2bbbad; color: white; text-align: center;">eeee</div>
         <div class="container">
             <br><br>
             <div class="row center">
             </div>
             <div class="row center">
                 <h3>Minhas Categorias</h3>
+                <a th:href="@{/categoria/cadastro}">Nova categoria</a>
             </div>
             <br>
         </div>
@@ -32,11 +35,14 @@
                 <td th:text="${categoria.nome}">Alvin</td>
                 <td>
                     <a th:href="@{/categoria/editar/{id}(id = ${categoria.id})}"><i class="material-icons">edit</i></a>
-                    <a href="#"><i class="material-icons">delete</i></a>
+                    <a th:href="@{/categoria/confirmaExclusao/{id}(id = ${categoria.id})}"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
+
         </tbody>
     </table>
+
+
     </main>
   </body>
 </html>

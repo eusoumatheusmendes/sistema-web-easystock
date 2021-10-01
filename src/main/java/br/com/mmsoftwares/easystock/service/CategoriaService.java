@@ -21,11 +21,6 @@ public class CategoriaService implements ICategoriaService{
     }
 
     @Override
-    public void atualizar(Categoria categoria) {
-        dao.save(categoria);
-    }
-
-    @Override
     public void excluir(Categoria categoria) {
         dao.delete(categoria);
     }

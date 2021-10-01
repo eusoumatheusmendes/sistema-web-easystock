@@ -22,7 +22,7 @@
 
     <div class="container">
       <div class="section">
-
+          <a href="javascript:history.back();"><i class="material-icons">arrow_back</i></a>
         <div>
           <form class="col s12" th:action="@{/categoria/salvar}" th:object="${categoria}" method="POST">
               <input type="hidden" th:field="*{id}">

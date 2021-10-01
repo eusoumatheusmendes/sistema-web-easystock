@@ -6,10 +6,15 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>easystock | informatizando a sua empresa</title>
-  <!-- CSS  -->
+
+  <!-- CSS Materialize -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link th:href="@{/css/materialize.css}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link th:href="@{/css/style.css}" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+    <!-- CSS Bootstrap -->
+
+
 </head>
 <body>
 
@@ -32,6 +37,18 @@
     <script>
         $(document).ready(function(){
             $('select').formSelect();
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems, options);
+        });
+
+        // Or with jQuery
+
+        $(document).ready(function(){
+        $('.modal').modal();
         });
     </script>
 </body>
