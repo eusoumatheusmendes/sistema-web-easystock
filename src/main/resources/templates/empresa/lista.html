@@ -8,6 +8,9 @@
 <body>
 <main layout:fragment="conteudo">
 
+    <!-- inserção de mensagens de alertas-->
+    <div th:insert="/fragments/mensagens"></div>
+
     <div class="section no-pad-bot" id="index-banner">
         <div class="container">
             <br><br>
@@ -36,7 +39,7 @@
                 <td th:text="${empresa.email}">Alvin</td>
                 <td>
                     <a th:href="@{/empresa/editar/{id}(id = ${empresa.id})}"><i class="material-icons">edit</i></a>
-                    <a href="#"><i class="material-icons">delete</i></a>
+                    <a th:href="@{/empresa/confirmaExclusao/{id}(id = ${empresa.id})}"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
         </tbody>

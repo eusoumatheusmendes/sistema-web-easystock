@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/empresa")
@@ -23,8 +24,9 @@ public class EmpresaController {
     }
 
     @PostMapping("/salvar")
-    public String salvar(Empresa empresa){
+    public String salvar(Empresa empresa, RedirectAttributes ra){
         service.salvar(empresa);
+        ra.addFlashAttribute("sucesso", "Operação realizada com sucesso!");
         return "redirect:/empresa/lista";
     }
 
@@ -38,5 +40,18 @@ public class EmpresaController {
     public String editar(@PathVariable("id") Empresa empresa, ModelMap model){
         model.addAttribute(empresa);
         return "/empresa/cadastro";
+    }
+
+    @GetMapping("/confirmaExclusao/{id}")
+    public String confirmarExclusao(@PathVariable("id")Empresa empresa, ModelMap model){
+        model.addAttribute(empresa);
+        return "/empresa/confirmacaoDeExclusao";
+    }
+
+    @GetMapping("/excluir/{id}")
+    public String excluir(Empresa empresa, RedirectAttributes ra){
+        service.excluir(empresa);
+        ra.addFlashAttribute("sucesso", "Empresa excluída com sucesso!");
+        return "redirect:/empresa/lista";
     }
 }

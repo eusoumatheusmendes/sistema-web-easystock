@@ -1,0 +1,15 @@
+ <nav class="alertaDeSucesso" th:if="${sucesso} != null">
+    <div class="nav-wrapper">
+      <div class="center">
+        <strong th:text="${sucesso}"></strong>
+      </div>
+    </div>
+ </nav>
+
+ <nav class="alertaDeFalha" th:if="${falha} != null">
+   <div class="nav-wrapper">
+     <div class="center">
+       <strong th:text="${falha}"></strong>
+     </div>
+   </div>
+ </nav>

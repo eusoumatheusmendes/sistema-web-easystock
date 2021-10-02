@@ -13,7 +13,8 @@
 	font-size: inherit;
 }
 .logo{
-    width: 45px;
+    width: 50px;
+    margin-top: 7px;
 }
 body {
     display: flex;
@@ -22,4 +23,11 @@ body {
 }
 main {
     flex: 1 0 auto;
+}
+.alertaDeSucesso{
+    background-color: #6eeeb0;
+}
+
+.alertaDeFalha{
+    background-color: #d81b60;
 }

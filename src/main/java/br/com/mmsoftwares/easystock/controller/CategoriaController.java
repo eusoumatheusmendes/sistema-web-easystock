@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/categoria")
@@ -23,8 +24,9 @@ public class CategoriaController {
     }
 
     @PostMapping("/salvar")
-    public String salvar(Categoria categoria){
+    public String salvar(Categoria categoria, RedirectAttributes ra){
         service.salvar(categoria);
+        ra.addFlashAttribute("sucesso", "Operação realizada com sucesso!");
         return "redirect:/categoria/lista";
     }
 
@@ -41,15 +43,16 @@ public class CategoriaController {
     }
 
     @GetMapping("/confirmaExclusao/{id}")
-    public String confirmaExclusao(@PathVariable("id")Categoria categoria, ModelMap model){
+    public String confirmarExclusao(@PathVariable("id")Categoria categoria, ModelMap model){
         model.addAttribute(categoria);
         return "/categoria/confirmacaoDeExclusao";
     }
 
     @GetMapping("/excluir/{id}")
-    public String excluir(@PathVariable("id")Categoria categoria, ModelMap model){
+    public String excluir(@PathVariable("id")Categoria categoria, ModelMap model, RedirectAttributes ra){
         model.addAttribute(categoria);
         service.excluir(categoria);
+        ra.addFlashAttribute("sucesso", "Categoria excluída com sucesso!");
         return "redirect:/categoria/lista";
     }
 

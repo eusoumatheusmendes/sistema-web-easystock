@@ -10,4 +10,9 @@ public class Home {
     public String home(){
         return "/home";
     }
+
+    @GetMapping("/mensagens")
+    public String exibirMensagens(){
+        return "/fragments/mensagens";
+    }
 }

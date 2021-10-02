@@ -36,4 +36,5 @@ public class Empresa extends AbstractEntity<Long>{
     private String senha;
 
 
+
 }
