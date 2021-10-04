@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<main layout:fragment="conteudo">
+
+    <!-- inserção de mensagens de alertas-->
+    <div th:insert="/fragments/mensagens"></div>
+
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <br><br>
+            <div class="row center">
+            </div>
+            <div class="row center">
+                <h3 class="teste">Meus Produtos</h3>
+                <br>
+                <a th:href="@{/produto/cadastro}">Adicionar mais produtos</a>
+            </div>
+            <br>
+
+            <nav class="campoPesquisaProduto">
+                <div class="nav-wrapper">
+                    <form>
+                        <div class="input-field">
+                            <input id="search" type="search" required>
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <table class="responsive-table centered">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Preço Venda</th>
+            <th>Quantidade Disponível</th>
+            <th>Categoria</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="produto : ${produtos}">
+                <td th:text="${produto.getNome()}">Alvin</td>
+                <td th:text="${produto.getPrecoDeVenda()}">Alvin</td>
+                <td th:text="${produto.getQuantidadeEmEstoque()}">Alvin</td>
+                <td th:text="${produto.getCategoria().getNome()}">Alvin</td>
+                <td>
+                    <a th:href="@{/produto/editar/{id}(id = ${produto.id})}"><i class="material-icons">edit</i></a>
+                    <a th:href="@{/produto/confirmaExclusao/{id}(id = ${produto.id})}"><i class="material-icons">delete</i></a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+    </main>
+  </body>
+</html>

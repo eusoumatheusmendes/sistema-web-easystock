@@ -25,30 +25,41 @@
 
       <div class="container">
         <div class="section">
+          <a href="javascript:history.back();"><i class="material-icons">arrow_back</i></a>
           <div>
-            <form class="col s12">
+            <form th:action="@{/produto/salvar}" th:object="${produto}" class="col s12" method="POST">
+              <input type="hidden" th:field="*{id}">
                 <div class="input-field col s6">
                   <i class="material-icons prefix">assignment</i>
-                  <input id="icon_prefix" type="text" class="validate">
+                  <input th:field="*{nome}" id="icon_prefix" type="text" class="validate">
                   <label for="icon_prefix">Nome do produto</label>
                 </div>
                 <div class="input-field col s6">
                   <i class="material-icons prefix">attach_money</i>
-                  <input id="icon_telephone" type="text" class="validate">
+                  <input th:field="*{precoDeVenda}" id="icon_telephone" type="text" class="validate">
                   <label for="icon_telephone">Preço de venda</label>
                 </div>
               <div class="input-field col s6">
                 <i class="material-icons prefix">exposure_plus_1</i>
-                <input id="icon_telephone" type="tel" class="validate">
+                <input th:field="*{quantidadeEmEstoque}" id="icon_telephone" type="tel" class="validate">
                 <label for="icon_telephone">Quantidade em estoque</label>
               </div>
               <div class="input-field col s12">
                 <i class="material-icons prefix">widgets</i>
-                <select>
-                  <option value="" disabled selected>Categoria do Produto</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
+                <select th:field="*{empresa}">
+                  <option value=""  selected>Empresa</option>
+                  <option th:each="e : ${empresas}" th:value="${e.id}"
+                          th:text="${e.nome}"></option>
+                </select>
+                <label>Categoria do Produto</label>
+              </div>
+
+              <div class="input-field col s12">
+                <i class="material-icons prefix">widgets</i>
+                <select th:field="*{categoria}">
+                  <option value=""  selected>Categoria do Produto</option>
+                  <option th:each="c : ${categorias}" th:value="${c.id}"
+                          th:text="${c.nome}"></option>
                 </select>
                 <label>Categoria do Produto</label>
               </div>
