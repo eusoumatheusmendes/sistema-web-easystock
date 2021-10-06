@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+<main layout:fragment="conteudo">
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <div class="row center">
+      </div>
+      <div class="row center">
+        <h3>Confirmação de exclusão</h3>
+      </div>
+    </div>
+  </div>
+
+  <section>
+
+    <div class=" container">
+      <div class="col s12 m6">
+        <div class="card light-blue  center-align">
+          <div class="card-content white-text">
+            <span class="card-title">Deseja realmente excluir?</span>
+            <p th:text="${cliente.nome}"></p>
+          </div>
+          <div class="card-action">
+            <a href="javascript:history.back();">Não</a>
+            <a th:href="@{/cliente/excluir/{id}(id = ${cliente.id})}">Sim</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+</body>
+</html>

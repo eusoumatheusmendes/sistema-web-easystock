@@ -1,5 +1,4 @@
 package br.com.mmsoftwares.easystock.controller;
-import br.com.mmsoftwares.easystock.dao.IEmpresaDao;
 import br.com.mmsoftwares.easystock.model.Empresa;
 import br.com.mmsoftwares.easystock.service.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;

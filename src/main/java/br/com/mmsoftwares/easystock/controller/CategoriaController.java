@@ -26,7 +26,7 @@ public class CategoriaController {
     @PostMapping("/salvar")
     public String salvar(Categoria categoria, RedirectAttributes ra){
         service.salvar(categoria);
-        ra.addFlashAttribute("sucesso", "Operação realizada com sucesso!");
+        ra.addFlashAttribute("sucesso", "Categoria adicionada com sucesso!");
         return "redirect:/categoria/lista";
     }
 
@@ -42,6 +42,13 @@ public class CategoriaController {
         return "/categoria/cadastro";
     }
 
+    @PostMapping("/atualizar")
+    public String atualizar(Categoria categoria, RedirectAttributes ra){
+        service.salvar(categoria);
+        ra.addFlashAttribute("sucesso", "Categoria atualizada com sucesso!");
+        return "redirect:/categoria/lista";
+    }
+
     @GetMapping("/confirmaExclusao/{id}")
     public String confirmarExclusao(@PathVariable("id")Categoria categoria, ModelMap model){
         model.addAttribute(categoria);
@@ -49,8 +56,7 @@ public class CategoriaController {
     }
 
     @GetMapping("/excluir/{id}")
-    public String excluir(@PathVariable("id")Categoria categoria, ModelMap model, RedirectAttributes ra){
-        model.addAttribute(categoria);
+    public String excluir(@PathVariable("id")Categoria categoria, RedirectAttributes ra){
         service.excluir(categoria);
         ra.addFlashAttribute("sucesso", "Categoria excluída com sucesso!");
         return "redirect:/categoria/lista";
