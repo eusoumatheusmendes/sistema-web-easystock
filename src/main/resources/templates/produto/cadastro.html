@@ -16,6 +16,7 @@
 
           </div>
           <div class="row center">
+            <a th:href="@{/empresa/bemvindo}"><i class="material-icons">home</i></a>
             <h3>Cadastre os seus produtos</h3>
           </div>
           <br><br>
@@ -28,6 +29,7 @@
           <a href="javascript:history.back();"><i class="material-icons">arrow_back</i></a>
           <div>
             <form th:action="${produto.id == null} ? @{/produto/salvar} : @{/produto/atualizar}" th:object="${produto}" class="col s12" method="POST">
+
               <input type="hidden" th:field="*{id}">
                 <div class="input-field col s6">
                   <i class="material-icons prefix">assignment</i>
@@ -36,7 +38,7 @@
                 </div>
                 <div class="input-field col s6">
                   <i class="material-icons prefix">attach_money</i>
-                  <input th:field="*{precoDeVenda}" id="icon_telephone" type="text" class="validate">
+                  <input th:field="*{precoDeVenda}" id="demo3" type="text" class="validate" >
                   <label for="icon_telephone">Preço de venda</label>
                 </div>
               <div class="input-field col s6">

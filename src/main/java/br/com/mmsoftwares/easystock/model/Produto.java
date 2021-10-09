@@ -3,6 +3,7 @@ package br.com.mmsoftwares.easystock.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -17,6 +18,7 @@ public class Produto extends AbstractEntity<Long>{
 
     @Getter @Setter
     @Column(name = "preco_venda", columnDefinition = "Decimal(7, 2)", nullable = false)
+    @NumberFormat(style = NumberFormat.Style.CURRENCY, pattern = "#,#00.00")
     private BigDecimal precoDeVenda;
 
     @Getter @Setter
@@ -27,7 +29,6 @@ public class Produto extends AbstractEntity<Long>{
     @ManyToOne
     @JoinColumn(name = "id_empresa_fk")
     private Empresa empresa;
-
 
     @Getter @Setter
     @ManyToOne

@@ -53,4 +53,9 @@ public class EmpresaController {
         ra.addFlashAttribute("sucesso", "Empresa excluída com sucesso!");
         return "redirect:/empresa/lista";
     }
+
+    @GetMapping("/bemvindo")
+    public String bemVindo(){
+        return "/empresa/bem-vindo";
+    }
 }

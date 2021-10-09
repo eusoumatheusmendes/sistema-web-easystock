@@ -36,4 +36,9 @@ public class ClienteService implements IClienteService{
     public Collection<Cliente> buscarTodos() {
         return dao.findAll();
     }
+
+    @Override
+    public Collection<Cliente> buscarPorNome(String nome) {
+        return dao.findByNomeContains(nome);
+    }
 }

@@ -14,4 +14,6 @@ public interface IClienteService {
     Optional<Cliente> buscarPorId(Long id);
 
     Collection<Cliente> buscarTodos();
+
+    Collection<Cliente> buscarPorNome(String nome);
 }

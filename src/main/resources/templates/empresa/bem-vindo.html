@@ -8,7 +8,39 @@
 <body>
 <main layout:fragment="conteudo">
 
+  <div class="container">
+    <div class="section">
 
+      <!--   Icon Section   -->
+      <div class="row">
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">add_shopping_cart</i></h2>
+            <a href="#"><h5 class="center">Meus Pedidos</h5></a>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">local_shipping</i></h2>
+           <a th:href="@{/produto/lista}"><h5 class="center">Meus produtos</h5></a>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+            <a th:href="@{/cliente/lista}"><h5 class="center">Meus Clientes</h5></a>
+          </div>
+        </div>
+
+
+      </div>
+      <hr>
+    </div>
+    <br><br>
+  </div>
 </main>
 </body>
 </html>

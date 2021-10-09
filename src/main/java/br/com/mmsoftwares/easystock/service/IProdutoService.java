@@ -15,4 +15,6 @@ public interface IProdutoService{
     Optional<Produto> buscarPorId(Long id);
 
     Collection<Produto> buscarTodos();
+
+    Collection<Produto> buscarPorNome(String nome);
 }

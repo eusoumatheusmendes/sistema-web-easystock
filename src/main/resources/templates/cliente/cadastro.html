@@ -15,6 +15,7 @@
 
         </div>
         <div class="row center">
+          <a th:href="@{/empresa/bemvindo}"><i class="material-icons">home</i></a>
           <h3>Cadastro de clientes</h3>
         </div>
         <br><br>
@@ -24,7 +25,7 @@
 
     <div class="container">
       <div class="section">
-
+        <a href="javascript:history.back();"><i class="material-icons">arrow_back</i></a>
         <div>
           <form class="col s12" th:action=" ${cliente.id == null} ? @{/cliente/salvar} : @{/cliente/atualizar}" th:object="${cliente}" method="POST">
 

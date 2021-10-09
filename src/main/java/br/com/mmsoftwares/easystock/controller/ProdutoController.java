@@ -82,4 +82,10 @@ public class ProdutoController {
         ra.addFlashAttribute("sucesso", produto.getNome() + " excluído com sucesso!");
         return "redirect:/produto/lista";
     }
+
+    @GetMapping("/buscar/nome")
+    public String buscarPorNome(@RequestParam("nome")String nome, ModelMap model){
+        model.addAttribute("produtos", service.buscarPorNome(nome));
+        return "/produto/lista";
+    }
 }

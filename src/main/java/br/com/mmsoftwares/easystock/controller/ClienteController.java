@@ -5,13 +5,9 @@ import br.com.mmsoftwares.easystock.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.Collection;
 
 @Controller
 @RequestMapping("/cliente")
@@ -32,6 +28,12 @@ public class ClienteController {
         return "redirect:/cliente/lista";
     }
 
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable("id")Cliente cliente, ModelMap model){
+        model.addAttribute(cliente);
+        return "/cliente/cadastro";
+    }
+
     @PostMapping("/atualizar")
     public String atualizar(Cliente cliente, RedirectAttributes ra){
         service.salvar(cliente);
@@ -43,12 +45,6 @@ public class ClienteController {
     public String listar(ModelMap model){
         model.addAttribute("clientes", service.buscarTodos());
         return "/cliente/lista";
-    }
-
-    @GetMapping("/editar/{id}")
-    public String editar(@PathVariable("id")Cliente cliente, ModelMap model){
-        model.addAttribute(cliente);
-        return "/cliente/cadastro";
     }
 
     @GetMapping("/confirmaExclusao/{id}")
@@ -63,4 +59,11 @@ public class ClienteController {
         ra.addFlashAttribute("sucesso", "CLiente " +cliente.getNome() + " excluído com sucesso!");
         return "redirect:/cliente/lista";
     }
+
+    @GetMapping("/buscar/nome")
+    public String buscarPorNome(@RequestParam("nome")String nome, ModelMap model){
+        model.addAttribute("clientes", service.buscarPorNome(nome));
+        return "/cliente/lista";
+    }
+
 }

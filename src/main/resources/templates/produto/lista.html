@@ -17,6 +17,7 @@
             <div class="row center">
             </div>
             <div class="row center">
+                <a th:href="@{/empresa/bemvindo}"><i class="material-icons">home</i></a>
                 <h3 class="teste">Meus Produtos</h3>
                 <br>
                 <a th:href="@{/produto/cadastro}">Adicionar mais produtos</a>
@@ -25,9 +26,9 @@
 
             <nav class="campoPesquisaProduto">
                 <div class="nav-wrapper">
-                    <form>
+                    <form th:action="@{/produto/buscar/nome}" method="GET">
                         <div class="input-field">
-                            <input id="search" type="search" required>
+                            <input id="search" type="search" th:name="nome">
                             <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                             <i class="material-icons">close</i>
                         </div>
@@ -50,7 +51,7 @@
         <tbody>
             <tr th:each="produto : ${produtos}">
                 <td th:text="${produto.getNome()}">Alvin</td>
-                <td th:text="${produto.getPrecoDeVenda()}">Alvin</td>
+                <td th:text="|R$ ${#numbers.formatDecimal(produto.precoDeVenda, 1, 'DEFAULT', 2, 'DEFAULT')}|">Alvin</td>
                 <td th:text="${produto.getQuantidadeEmEstoque()}">Alvin</td>
                 <td th:text="${produto.getCategoria().getNome()}">Alvin</td>
                 <td>
