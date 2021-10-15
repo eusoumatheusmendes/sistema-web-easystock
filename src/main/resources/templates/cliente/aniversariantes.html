@@ -20,7 +20,7 @@
                 <a th:href="@{/empresa/bemvindo}"><i class="material-icons">home</i></a>
                 <h3 class="teste">Meus Clientes</h3>
                 <br>
-                <a th:href="@{/cliente/cadastro}">Adicionar mais clientes</a>
+                <a th:href="@{/cliente/cadastro}">Aniversariantes do dia</a>
             </div>
             <br>
 
@@ -45,17 +45,18 @@
             <th>Número/Whatsapp</th>
             <th>Logradouro</th>
             <th>Complemento</th>
+            <th>Data de Nascimento</th>
         </tr>
         </thead>
         <tbody>
-            <tr th:each="cliente : ${clientes}">
-                <td th:text="${cliente.getNome()}">Alvin</td>
-                <td th:text="${cliente.getNumeroDeTelefone()}">Alvin</td>
-                <td th:text="${cliente.getEndereco().getLogradouro()}">Alvin</td>
-                <td th:text="${cliente.getEndereco().getComplemento()}">Alvin</td>
+            <tr th:each="aniversariante : ${aniversariantes}">
+                <td th:text="${aniversariante.getNome()}">Alvin</td>
+                <td th:text="${aniversariante.getNumeroDeTelefone()}">Alvin</td>
+                <td th:text="${aniversariante.getEndereco().getLogradouro()}">Alvin</td>
+                <td th:text="${aniversariante.getEndereco().getComplemento()}">Alvin</td>
+                <td th:text="${aniversariante.getDataDeNascimento()}">Alvin</td>
                 <td>
-                    <a th:href="@{/cliente/editar/{id}(id = ${cliente.id})}"><i class="material-icons">edit</i></a>
-                    <a th:href="@{/cliente/confirmaExclusao/{id}(id = ${cliente.id})}"><i class="material-icons">delete</i></a>
+                    <i class="material-icons">cake</i>
                 </td>
             </tr>
 

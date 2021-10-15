@@ -21,6 +21,9 @@
                 <h3 class="teste">Meus Produtos</h3>
                 <br>
                 <a th:href="@{/produto/cadastro}">Adicionar mais produtos</a>
+                <br>
+                <br>
+                <a th:href="@{/produto/nocarrinho}">Carrinho do cliente</a>
             </div>
             <br>
 
@@ -55,6 +58,7 @@
                 <td th:text="${produto.getQuantidadeEmEstoque()}">Alvin</td>
                 <td th:text="${produto.getCategoria().getNome()}">Alvin</td>
                 <td>
+                    <a th:href="@{/produto/abrirPedido/{id}(id = ${produto.id})}"><i class="material-icons"><i class="material-icons right">shopping_cart</i></i></a>
                     <a th:href="@{/produto/editar/{id}(id = ${produto.id})}"><i class="material-icons">edit</i></a>
                     <a th:href="@{/produto/confirmaExclusao/{id}(id = ${produto.id})}"><i class="material-icons">delete</i></a>
                 </td>

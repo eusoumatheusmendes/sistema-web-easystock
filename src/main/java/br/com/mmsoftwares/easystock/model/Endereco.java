@@ -14,12 +14,15 @@ public class Endereco extends AbstractEntity<Long>{
     @Getter @Setter
     @Column(nullable = false, length = 100)
     private String logradouro;
+
     @Getter @Setter
     @Column(nullable = false, length = 100)
     private String bairro;
+
     @Getter @Setter
     @Column(nullable = false, length = 100)
     private Integer numero;
+
     @Getter @Setter
     @Column(length = 100)
     private String complemento;

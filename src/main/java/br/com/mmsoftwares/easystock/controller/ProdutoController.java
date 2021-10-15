@@ -13,7 +13,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Controller
 @RequestMapping("/produto")
@@ -27,7 +29,6 @@ public class ProdutoController {
 
     @Autowired
     private EmpresaService serviceDaEmpresa;
-
 
     @GetMapping("/cadastro")
     public String cadastrar(Produto produto){
@@ -88,4 +89,11 @@ public class ProdutoController {
         model.addAttribute("produtos", service.buscarPorNome(nome));
         return "/produto/lista";
     }
+
+    @GetMapping("/abrirPedido/{id}")
+    public String abrirPedido(@PathVariable("id") Produto produto, ModelMap model){
+        model.addAttribute(produto);
+        return "/produto/reservado";
+    }
+
 }

@@ -8,6 +8,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 
 @Controller
 @RequestMapping("/cliente")
@@ -43,6 +47,10 @@ public class ClienteController {
 
     @GetMapping("/lista")
     public String listar(ModelMap model){
+
+        Stream<Cliente> clienteStream =  service.buscarTodos().stream().filter(Cliente::ehAniversarianteDoDia);
+        List<Cliente> aniversariantesDoDia = clienteStream.collect(Collectors.toList());
+        model.addAttribute("aniversariantes", aniversariantesDoDia);
         model.addAttribute("clientes", service.buscarTodos());
         return "/cliente/lista";
     }
@@ -64,6 +72,21 @@ public class ClienteController {
     public String buscarPorNome(@RequestParam("nome")String nome, ModelMap model){
         model.addAttribute("clientes", service.buscarPorNome(nome));
         return "/cliente/lista";
+    }
+
+    @GetMapping("/aniversariantes")
+    public String exibirListaDeAniversariantes(ModelMap model){
+        Stream<Cliente> clienteStream = service.buscarTodos().stream().filter(Cliente::ehAniversarianteDoDia);
+        List<Cliente> aniversariantes = clienteStream.collect(Collectors.toList());
+        model.addAttribute("aniversariantes", aniversariantes);
+        return "/cliente/aniversariantes";
+    }
+
+    @ModelAttribute("temAniversariante")
+    public boolean temAniversariante(ModelMap model){
+        Stream<Cliente> clienteStream = service.buscarTodos().stream().filter(Cliente::ehAniversarianteDoDia);
+        List<Cliente> aniversariantes = clienteStream.collect(Collectors.toList());
+        return !aniversariantes.isEmpty();
     }
 
 }
