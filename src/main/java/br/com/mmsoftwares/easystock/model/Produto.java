@@ -35,4 +35,11 @@ public class Produto extends AbstractEntity<Long>{
     @JoinColumn(name = "id_categoria_fk")
     private Categoria categoria;
 
+    public void darBaixaEmEstoque(int quantidade){
+        if(this.getQuantidadeEmEstoque() < quantidade){
+            throw  new QuantidadeEmEstoqueException("Quantidade em estoque inferior ao pedido." +
+                    " Verifique a quantidade.");
+        }
+        this.setQuantidadeEmEstoque(this.getQuantidadeEmEstoque() - quantidade);
+    }
 }

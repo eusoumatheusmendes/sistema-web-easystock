@@ -17,6 +17,9 @@ public class EmpresaController {
     @Autowired
     private EmpresaService service;
 
+    @Autowired
+    private ClienteController clienteController;
+
     @GetMapping("/cadastro")
     public String cadastro(Empresa empresa){
         return "/empresa/cadastro";
@@ -55,7 +58,8 @@ public class EmpresaController {
     }
 
     @GetMapping("/bemvindo")
-    public String bemVindo(){
+    public String bemVindo(ModelMap model){
+        clienteController.temAniversariante(model);
         return "/empresa/bem-vindo";
     }
 }

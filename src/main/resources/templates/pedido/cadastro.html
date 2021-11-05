@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+    <main layout:fragment="conteudo">
+
+      <div th:insert="/fragments/mensagens"></div>
+
+      <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+          <br><br>
+
+          <div class="row center">
+
+          </div>
+          <div class="row center">
+            <a th:href="@{/empresa/bemvindo}"><i class="material-icons">home</i></a>
+            <h3>Lançar pedido</h3>
+          </div>
+          <br><br>
+
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="section">
+          <a href="javascript:history.back();"><i class="material-icons">arrow_back</i></a>
+          <div>
+            <form th:action="${pedido.id == null} ? @{/pedido/registrar} : @{/pedido/atualizar}" th:object="${pedido}" class="col s12" method="POST">
+
+              <input type="hidden" th:field="*{id}">
+
+              <div class="input-field col s12">
+                <i class="material-icons prefix">widgets</i>
+                <select th:field="*{produto}">
+                  <option value=""  selected>Produto</option>
+                  <option th:each="p : ${produtos}" th:value="${p.id}"
+                          th:text="${p.nome}"></option>
+                </select>
+                <label>Selecione o Produto</label>
+              </div>
+
+              <div class="input-field col s12">
+                <i class="material-icons prefix">widgets</i>
+                <select th:field="*{cliente}">
+                  <option value=""  selected>Cliente</option>
+                  <option th:each="c : ${clientes}" th:value="${c.id}"
+                          th:text="${c.nome}"></option>
+                </select>
+                <label>Selecione o cliente</label>
+              </div>
+              <a th:href="@{/cliente/cadastro}">Cadastrar cliente</a>
+
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">assignment</i>
+                  <input th:field="*{quantidade}" id="icon_prefix" type="text" class="validate">
+                  <label for="icon_prefix">Quantidade</label>
+                </div>
+
+              <div class="center">
+              <button class="btn waves-effect waves-light" type="submit" name="action">Lançar
+                <i class="material-icons right">save</i>
+              </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+        <br><br>
+      </div>
+    </main>
+  </body>
+</html>

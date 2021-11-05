@@ -7,7 +7,7 @@
 <nav class="light-blue lighten-1" role="navigation" th:fragment="cabecalho">
     <div class="nav-wrapper container "><a  id="logo-container" th:href="@{/empresa/bemvindo}" class="brand-logo"><img class="logo center" th:src="@{/imagens/husky.png}"></a>
 
-        <div th:if="${temAniversariante}" class="container"><a href="#"><img class="notificacao" th:src="@{/imagens/bolo.png}"></a></div>
+        <div th:if="${temAniversariante}" class="container"><a th:href="@{/cliente/aniversariantes}"><img class="notificacao" th:src="@{/imagens/bolo.png}"></a></div>
 
         <ul id="nav-mobile" class="sidenav">
             <li><a href="#">Navbar Link</a></li>

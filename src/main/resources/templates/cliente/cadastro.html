@@ -30,6 +30,8 @@
           <form class="col s12" th:action=" ${cliente.id == null} ? @{/cliente/salvar} : @{/cliente/atualizar}" th:object="${cliente}" method="POST">
 
             <input type="hidden" th:field="*{id}">
+            <input type="hidden" th:field="*{dataDeCadastro}">
+
             <div class="input-field col s6">
                 <i class="material-icons prefix">person_add</i>
                 <input id="icon_prefix" type="text" class="validate" th:field="*{nome}">

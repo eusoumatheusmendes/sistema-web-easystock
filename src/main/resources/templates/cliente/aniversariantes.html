@@ -20,7 +20,7 @@
                 <a th:href="@{/empresa/bemvindo}"><i class="material-icons">home</i></a>
                 <h3 class="teste">Meus Clientes</h3>
                 <br>
-                <a th:href="@{/cliente/cadastro}">Aniversariantes do dia</a>
+                <a th:href="@{/cliente/lista}">Ir para todos os clientes</a>
             </div>
             <br>
 
@@ -54,7 +54,7 @@
                 <td th:text="${aniversariante.getNumeroDeTelefone()}">Alvin</td>
                 <td th:text="${aniversariante.getEndereco().getLogradouro()}">Alvin</td>
                 <td th:text="${aniversariante.getEndereco().getComplemento()}">Alvin</td>
-                <td th:text="${aniversariante.getDataDeNascimento()}">Alvin</td>
+                <td th:text="${#temporals.format(aniversariante.getDataDeNascimento(), 'dd/MM/yyyy')}">Alvin</td>
                 <td>
                     <i class="material-icons">cake</i>
                 </td>

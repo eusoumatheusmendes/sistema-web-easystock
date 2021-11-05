@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Month;
 
@@ -36,18 +37,29 @@ public class Cliente extends AbstractEntity<Long> {
 
     @Getter @Setter
     @DateTimeFormat(pattern = "yyyy-MM-dd", iso = DateTimeFormat.ISO.DATE)
-    @Column(name = "data_de_cadastro")
+    @Column(name = "data_de_cadastro", nullable = false)
     private LocalDate dataDeCadastro;
 
     @Getter @Setter
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy-MM-dd")
-    @Column(name = "data_de_nascimento", columnDefinition = "DATE")
+    @Column(name = "data_de_nascimento", columnDefinition = "DATE", nullable = false)
     private LocalDate dataDeNascimento;
+
+    @Getter @Setter @Transient
+    private BigDecimal valorEmComprasConosco = BigDecimal.ZERO;
 
     public boolean ehAniversarianteDoDia(){
         Month mesDeNascimento = this.dataDeNascimento.getMonth();
         int diaDeNascimento = this.dataDeNascimento.getDayOfMonth();
         return LocalDate.now().getDayOfMonth() ==
                 diaDeNascimento && LocalDate.now().getMonth() == mesDeNascimento;
+    }
+
+    public boolean ehClienteNovo(){
+        return this.getId() == null;
+    }
+
+    public void adicionarValorEmCompras(BigDecimal bigDecimal){
+        this.valorEmComprasConosco.add(bigDecimal);
     }
 }

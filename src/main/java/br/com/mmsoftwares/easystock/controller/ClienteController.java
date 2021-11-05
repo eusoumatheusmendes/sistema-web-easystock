@@ -55,6 +55,8 @@ public class ClienteController {
         return "/cliente/lista";
     }
 
+
+
     @GetMapping("/confirmaExclusao/{id}")
     public String confirmarExclusao(@PathVariable("id")Cliente cliente, ModelMap model){
         model.addAttribute(cliente);

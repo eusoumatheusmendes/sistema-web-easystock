@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -17,6 +18,9 @@ public class ClienteService implements IClienteService{
 
     @Override
     public void salvar(Cliente cliente) {
+        if(cliente.ehClienteNovo()){
+            cliente.setDataDeCadastro(LocalDate.now());
+        }
         dao.save(cliente);
     }
 
@@ -41,4 +45,6 @@ public class ClienteService implements IClienteService{
     public Collection<Cliente> buscarPorNome(String nome) {
         return dao.findByNomeContains(nome);
     }
-}
+
+  }
+
