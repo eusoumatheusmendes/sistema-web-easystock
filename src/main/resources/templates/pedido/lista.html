@@ -46,6 +46,7 @@
             <th>Produto</th>
             <th>Cliente</th>
             <th>Quantidade</th>
+            <th>Data</th>
         </tr>
         </thead>
         <tbody>
@@ -53,6 +54,8 @@
                 <td th:text="${pedido.getProduto().getNome()}">Alvin</td>
                 <td th:text="${pedido.getCliente().getNome()}">Alvin</td>
                 <td th:text="${pedido.getQuantidade()}">Alvin</td>
+                <td th:text="${#temporals.format(pedido.dataDeCadastro, 'dd/MM/yyyy')}">Alvin</td>
+
                 <td>
                     <a th:href="@{/pedido/abrirPedido/{id}(id = ${pedido.id})}"><i class="material-icons"><i class="material-icons right">shopping_cart</i></i></a>
                     <a th:href="@{/pedido/editar/{id}(id = ${pedido.id})}"><i class="material-icons">edit</i></a>

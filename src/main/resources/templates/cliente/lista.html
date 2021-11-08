@@ -45,6 +45,7 @@
             <th>Número/Whatsapp</th>
             <th>Logradouro</th>
             <th>Complemento</th>
+            <th>valor em compras</th>
         </tr>
         </thead>
         <tbody>
@@ -53,6 +54,7 @@
                 <td th:text="${cliente.getNumeroDeTelefone()}">Alvin</td>
                 <td th:text="${cliente.getEndereco().getLogradouro()}">Alvin</td>
                 <td th:text="${cliente.getEndereco().getComplemento()}">Alvin</td>
+                <td th:text="|R$ ${#numbers.formatDecimal(cliente.valorEmComprasConosco, 1, 'DEFAULT', 2, 'DEFAULT')}|">Alvin</td>
                 <td>
                     <a th:href="@{/cliente/editar/{id}(id = ${cliente.id})}"><i class="material-icons">edit</i></a>
                     <a th:href="@{/cliente/confirmaExclusao/{id}(id = ${cliente.id})}"><i class="material-icons">delete</i></a>

@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class ClienteService implements IClienteService{
@@ -38,7 +39,8 @@ public class ClienteService implements IClienteService{
     @Override
     @Transactional(readOnly = true)
     public Collection<Cliente> buscarTodos() {
-        return dao.findAll();
+        Stream<Cliente> clientesOrdenadosPorMaiorValorEmCompras = dao.findAll().stream().sorted(Comparator.comparing(Cliente::getValorEmComprasConosco).reversed());
+        return clientesOrdenadosPorMaiorValorEmCompras.collect(Collectors.toList());
     }
 
     @Override

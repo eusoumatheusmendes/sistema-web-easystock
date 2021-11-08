@@ -13,6 +13,10 @@ import java.time.Month;
 @Table(name = "CLIENTES")
 public class Cliente extends AbstractEntity<Long> {
 
+    public Cliente(){
+        this.setValorEmComprasConosco(BigDecimal.valueOf(0));
+    }
+
     @Getter @Setter
     @Column(nullable = false, length = 100)
     private String nome;
@@ -45,8 +49,9 @@ public class Cliente extends AbstractEntity<Long> {
     @Column(name = "data_de_nascimento", columnDefinition = "DATE", nullable = false)
     private LocalDate dataDeNascimento;
 
-    @Getter @Setter @Transient
-    private BigDecimal valorEmComprasConosco = BigDecimal.ZERO;
+    @Getter @Setter
+    private BigDecimal valorEmComprasConosco;
+
 
     public boolean ehAniversarianteDoDia(){
         Month mesDeNascimento = this.dataDeNascimento.getMonth();
@@ -59,7 +64,12 @@ public class Cliente extends AbstractEntity<Long> {
         return this.getId() == null;
     }
 
-    public void adicionarValorEmCompras(BigDecimal bigDecimal){
-        this.valorEmComprasConosco.add(bigDecimal);
+    public void adicionarValorEmCompras(BigDecimal valor, int quantidade, BigDecimal valorJaExistente){
+        this.valorEmComprasConosco = new BigDecimal(0);
+        BigDecimal valorDoPedido = valor.multiply(BigDecimal.valueOf(quantidade));
+        BigDecimal valorTotal = this.valorEmComprasConosco.add(valorDoPedido);
+        this.valorEmComprasConosco = valorTotal.add(valorJaExistente);
     }
+
+
 }

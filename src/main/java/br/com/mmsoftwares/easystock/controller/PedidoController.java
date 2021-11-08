@@ -13,6 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 
 @Controller
@@ -43,6 +44,7 @@ public class PedidoController {
            return "/pedido/cadastro";
        }
         service.salvar(pedido);
+        pedido.getCliente().adicionarValorEmCompras(pedido.getProduto().getPrecoDeVenda(), pedido.getQuantidade(), pedido.getCliente().getValorEmComprasConosco());
         produtoService.salvar(pedido.getProduto());
         ra.addFlashAttribute("sucesso", "Pedido registrado com sucesso!");
         return "redirect:/produto/lista";
@@ -59,6 +61,13 @@ public class PedidoController {
     public String atualizar(Pedido pedido, RedirectAttributes ra){
         service.salvar(pedido);
         ra.addFlashAttribute("sucesso", "Pedido atualizado com sucesso!");
+        return "redirect:/pedido/lista";
+    }
+
+    @GetMapping("/excluir/{id}")
+    public String excluir(@PathVariable("id")Pedido pedido, RedirectAttributes ra){
+        service.excluir(pedido);
+        ra.addFlashAttribute("sucesso", "Pedido excluído com sucesso!");
         return "redirect:/pedido/lista";
     }
 
