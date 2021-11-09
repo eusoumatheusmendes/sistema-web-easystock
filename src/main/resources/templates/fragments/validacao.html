@@ -1,0 +1,8 @@
+ <nav th:if="${#fields.hasAnyErrors()}" th:fragment="validacao">
+    <div class="nav-wrapper">
+      <div class="center" th:each="error : ${#fields.detailedErrors()}">
+        <strong th:text="${error.message}"></strong>
+      </div>
+    </div>
+ </nav>
+

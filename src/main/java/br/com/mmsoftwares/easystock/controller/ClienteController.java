@@ -1,13 +1,16 @@
 package br.com.mmsoftwares.easystock.controller;
 
 import br.com.mmsoftwares.easystock.model.Cliente;
+import br.com.mmsoftwares.easystock.model.Endereco;
 import br.com.mmsoftwares.easystock.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,7 +30,10 @@ public class ClienteController {
     }
 
     @PostMapping("/salvar")
-    public String salvar(Cliente cliente, RedirectAttributes ra){
+    public String salvar(@Valid Cliente cliente,  BindingResult valid, RedirectAttributes ra){
+        if(valid.hasErrors()){
+            return "/cliente/cadastro";
+        }
         service.salvar(cliente);
         ra.addFlashAttribute("sucesso", "Cliente cadastrado com sucesso!");
         return "redirect:/cliente/lista";
@@ -48,7 +54,6 @@ public class ClienteController {
 
     @GetMapping("/lista")
     public String listar(ModelMap model){
-
         Stream<Cliente> clienteStream =  service.buscarTodos().stream().filter(Cliente::ehAniversarianteDoDia);
         List<Cliente> aniversariantesDoDia = clienteStream.collect(Collectors.toList());
         model.addAttribute("aniversariantes", aniversariantesDoDia);
@@ -82,14 +87,10 @@ public class ClienteController {
         Stream<Cliente> clienteStream = service.buscarTodos().stream().filter(Cliente::ehAniversarianteDoDia);
         List<Cliente> aniversariantes = clienteStream.collect(Collectors.toList());
         model.addAttribute("aniversariantes", aniversariantes);
+        model.addAttribute("temAniversariante", !aniversariantes.isEmpty());
         return "/cliente/aniversariantes";
     }
 
-    @ModelAttribute("temAniversariante")
-    public boolean temAniversariante(ModelMap model){
-        Stream<Cliente> clienteStream = service.buscarTodos().stream().filter(Cliente::ehAniversarianteDoDia);
-        List<Cliente> aniversariantes = clienteStream.collect(Collectors.toList());
-        return !aniversariantes.isEmpty();
-    }
+
 
 }

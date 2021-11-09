@@ -18,9 +18,9 @@
             </div>
             <div class="row center">
                 <a th:href="@{/empresa/bemvindo}"><i class="material-icons">home</i></a>
-                <h3 class="teste">Pedidos</h3>
+                <h3 class="teste">Meus Produtos</h3>
                 <br>
-                <a th:href="@{/pedido/cadastro}">Registrar pedido</a>
+                <a th:href="@{/produto/cadastro}">Adicionar mais produtos</a>
                 <br>
 
             </div>
@@ -28,7 +28,7 @@
 
             <nav class="campoPesquisaProduto">
                 <div class="nav-wrapper">
-                    <form th:action="@{/pedido/buscar/nome}" method="GET">
+                    <form th:action="@{/produto/buscar/nome}" method="GET">
                         <div class="input-field">
                             <input id="search" type="search" th:name="nome">
                             <label class="label-icon" for="search"><i class="material-icons">search</i></label>
@@ -43,22 +43,22 @@
     <table class="responsive-table centered">
         <thead>
         <tr>
-            <th>Produto</th>
-            <th>Cliente</th>
-            <th>Quantidade</th>
-            <th>Data</th>
+            <th>Nome</th>
+            <th>Preço Venda</th>
+            <th>Quantidade Disponível</th>
+            <th>Categoria</th>
+            <th>Ações</th>
         </tr>
         </thead>
         <tbody>
-            <tr th:each="pedido : ${pedidos}">
-                <td th:text="${pedido.getProduto().getNome()}">Alvin</td>
-                <td th:text="${pedido.getCliente().getNome()}">Alvin</td>
-                <td th:text="${pedido.getQuantidade()}">Alvin</td>
-                <td th:text="${#temporals.format(pedido.dataDeCadastro, 'dd/MM/yyyy')}">Alvin</td>
-
+            <tr th:each="produto : ${produtosComEstoqueBaixo}">
+                <td th:text="${produto.getNome()}">Alvin</td>
+                <td th:text="|R$ ${#numbers.formatDecimal(produto.precoDeVenda, 1, 'DEFAULT', 2, 'DEFAULT')}|">Alvin</td>
+                <td th:text="${produto.getQuantidadeEmEstoque()}">Alvin</td>
+                <td th:text="${produto.getCategoria().getNome()}">Alvin</td>
                 <td>
-                    <a th:href="@{/pedido/editar/{id}(id = ${pedido.id})}"><i class="material-icons">edit</i></a>
-                    <a th:href="@{/pedido/confirmaExclusao/{id}(id = ${pedido.id})}"><i class="material-icons">delete</i></a>
+                    <a th:href="@{/produto/editar/{id}(id = ${produto.id})}"><i class="material-icons">edit</i></a>
+                    <a th:href="@{/produto/confirmaExclusao/{id}(id = ${produto.id})}"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
 

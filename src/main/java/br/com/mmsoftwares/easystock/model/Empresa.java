@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "EMPRESAS")
@@ -13,6 +14,7 @@ public class Empresa extends AbstractEntity<Long>{
 
     @Getter @Setter
     @Column(length = 100, nullable = false)
+    @NotBlank
     private String nome;
 
     @Getter @Setter
@@ -21,6 +23,7 @@ public class Empresa extends AbstractEntity<Long>{
 
     @Getter @Setter
     @Column(length = 11, nullable = false, unique = true)
+    @NotBlank
     private String numeroDoWhatsapp;
 
     @Getter @Setter
@@ -29,12 +32,12 @@ public class Empresa extends AbstractEntity<Long>{
 
     @Getter @Setter
     @Column(length = 100, nullable = false, unique = true)
+    @NotBlank
     private String email;
 
     @Getter @Setter
     @Column(length = 11, nullable = false)
+    @NotBlank
     private String senha;
-
-
 
 }

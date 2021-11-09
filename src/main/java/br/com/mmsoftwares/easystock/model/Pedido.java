@@ -5,6 +5,8 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -13,6 +15,7 @@ import java.time.LocalDate;
 public class Pedido extends AbstractEntity<Long>{
 
     @Getter @Setter
+    @NotBlank(message = "Por favor, informe uma quantidade")
     private Integer quantidade;
 
     @Getter @Setter
@@ -26,11 +29,13 @@ public class Pedido extends AbstractEntity<Long>{
     @Getter @Setter
     @ManyToOne
     @JoinColumn(name = "id_cliente_fk")
+    @NotNull(message = "Por favor, selecione o cliente que fez o pedido")
     private Cliente cliente;
 
     @Getter @Setter
     @ManyToOne
     @JoinColumn(name = "id_produto_fk")
+    @NotNull(message = "Por favor, selecione o produto do pedido")
     private Produto produto;
 
 }

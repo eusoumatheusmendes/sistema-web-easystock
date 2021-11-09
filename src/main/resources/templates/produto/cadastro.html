@@ -30,10 +30,12 @@
           <div>
             <form th:action="${produto.id == null} ? @{/produto/salvar} : @{/produto/atualizar}" th:object="${produto}" class="col s12" method="POST">
 
-              <input type="hidden" th:field="*{id}">
+              <div th:insert="/fragments/validacao"></div>
+
+              <input type="hidden" th:field="*{id}" >
                 <div class="input-field col s6">
                   <i class="material-icons prefix">assignment</i>
-                  <input th:field="*{nome}" id="icon_prefix" type="text" class="validate">
+                  <input th:field="*{nome}" id="icon_prefix" type="text" class="validate" th:required="true">
                   <label for="icon_prefix">Nome do produto</label>
                 </div>
                 <div class="input-field col s6">

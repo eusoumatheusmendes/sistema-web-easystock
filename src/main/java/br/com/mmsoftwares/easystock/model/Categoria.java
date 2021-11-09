@@ -7,6 +7,7 @@ import lombok.ToString;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "CATEGORIAS")
@@ -14,6 +15,7 @@ public class Categoria extends AbstractEntity<Long> {
 
     @Getter @Setter
     @Column(nullable = false, length = 100)
+    @NotBlank
     private String nome;
 
 

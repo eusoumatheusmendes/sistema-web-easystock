@@ -32,6 +32,8 @@
           <div>
             <form th:action="${pedido.id == null} ? @{/pedido/registrar} : @{/pedido/atualizar}" th:object="${pedido}" class="col s12" method="POST">
 
+              <div th:insert="/fragments/validacao"></div>
+
               <input type="hidden" th:field="*{id}">
 
               <div class="input-field col s12">

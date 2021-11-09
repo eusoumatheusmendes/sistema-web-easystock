@@ -20,6 +20,9 @@ public class EmpresaController {
     @Autowired
     private ClienteController clienteController;
 
+    @Autowired
+    private ProdutoController produtoController;
+
     @GetMapping("/cadastro")
     public String cadastro(Empresa empresa){
         return "/empresa/cadastro";
@@ -59,7 +62,8 @@ public class EmpresaController {
 
     @GetMapping("/bemvindo")
     public String bemVindo(ModelMap model){
-        clienteController.temAniversariante(model);
+        clienteController.exibirListaDeAniversariantes(model);
+        produtoController.listarProdutosComEstoqueBaixo(model);
         return "/empresa/bem-vindo";
     }
 }

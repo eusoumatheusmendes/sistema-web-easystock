@@ -17,4 +17,6 @@ public interface IProdutoService{
     Collection<Produto> buscarTodos();
 
     Collection<Produto> buscarPorNome(String nome);
+
+    Collection<Produto> trazerTodosOsProdutosQuePossuemMenosDeCincoQuantidadeEmEstoque();
 }

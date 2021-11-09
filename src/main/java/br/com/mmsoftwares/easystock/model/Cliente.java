@@ -5,6 +5,9 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Month;
@@ -19,22 +22,25 @@ public class Cliente extends AbstractEntity<Long> {
 
     @Getter @Setter
     @Column(nullable = false, length = 100)
+    @NotBlank(message = "Por favor, informe um nome")
     private String nome;
 
     @Getter @Setter
     @Column(nullable = false, length = 11)
+    @NotBlank(message = "Por favor, informe um número de telefone para contato")
     private String numeroDeTelefone;
 
     @Getter @Setter
     @Column(nullable = false, length = 100)
+    @NotBlank(message = "Por favor, informe um e-mail válido")
     private String email;
 
-    @Getter @Setter
+    @Getter @Setter @Valid
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_endereco_fk")
     private Endereco endereco;
 
-    @Getter @Setter
+    @Getter @Setter @Valid
     @ManyToOne
     @JoinColumn(name = "id_empresa_fk")
     private Empresa empresa;
@@ -47,6 +53,7 @@ public class Cliente extends AbstractEntity<Long> {
     @Getter @Setter
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy-MM-dd")
     @Column(name = "data_de_nascimento", columnDefinition = "DATE", nullable = false)
+    @NotNull(message = "Por favor, informe a data de nascimento do cliente")
     private LocalDate dataDeNascimento;
 
     @Getter @Setter

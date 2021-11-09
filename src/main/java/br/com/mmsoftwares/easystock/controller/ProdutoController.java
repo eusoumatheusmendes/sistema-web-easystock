@@ -10,12 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
+import javax.validation.Valid;
 import java.util.Collection;
-import java.util.List;
 
 @Controller
 @RequestMapping("/produto")
@@ -36,7 +36,11 @@ public class ProdutoController {
     }
 
     @PostMapping("/salvar")
-    public String salvar(Produto produto, RedirectAttributes ra){
+    public String salvar(@Valid Produto produto, BindingResult bindingResult, RedirectAttributes ra ){
+
+        if(bindingResult.hasErrors()){
+            return "/produto/cadastro";
+        }
         service.salvar(produto);
         ra.addFlashAttribute("sucesso", "Produto cadastrado com sucesso!");
         return "redirect:/produto/lista";
@@ -46,6 +50,14 @@ public class ProdutoController {
     public String listar(ModelMap model){
         model.addAttribute("produtos", service.buscarTodos());
         return "/produto/lista";
+    }
+
+    @GetMapping("/estoqueBaixo")
+    public String listarProdutosComEstoqueBaixo(ModelMap model){
+        model.addAttribute("produtosComEstoqueBaixo", service.
+                trazerTodosOsProdutosQuePossuemMenosDeCincoQuantidadeEmEstoque());
+        model.addAttribute("temProdutoComEstoqueBaixo", !service.trazerTodosOsProdutosQuePossuemMenosDeCincoQuantidadeEmEstoque().isEmpty());
+        return "/produto/listaDeEstoqueBaixo";
     }
 
     @GetMapping("/editar/{id}")

@@ -40,4 +40,9 @@ public class ProdutoService implements IProdutoService{
     public Collection<Produto> buscarPorNome(String nome) {
         return dao.findByNomeContains(nome);
     }
+
+    @Override
+    public Collection<Produto> trazerTodosOsProdutosQuePossuemMenosDeCincoQuantidadeEmEstoque() {
+        return dao.trazerTodosOsProdutosQuePossuemMenosDeCincoQuantidadeEmEstoque();
+    }
 }

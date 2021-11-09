@@ -29,6 +29,8 @@
         <div>
           <form class="col s12" th:action=" ${cliente.id == null} ? @{/cliente/salvar} : @{/cliente/atualizar}" th:object="${cliente}" method="POST">
 
+            <div th:insert="/fragments/validacao"></div>
+
             <input type="hidden" th:field="*{id}">
             <input type="hidden" th:field="*{dataDeCadastro}">
 

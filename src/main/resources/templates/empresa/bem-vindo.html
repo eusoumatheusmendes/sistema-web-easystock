@@ -35,7 +35,7 @@
           </div>
         </div>
 
-        <div class="col s12 m4">
+        <div class="col s12 m4" th:if="${temAniversariante}">
           <div class="icon-block">
             <a th:href="@{/cliente/aniversariantes}"><h2 class="center light-blue-text"><i class="material-icons">cake</i></h2>
             <h6 class="center">Aniversariantes do dia</h6></a>
@@ -43,10 +43,10 @@
         </div>
 
 
-        <div class="col s12 m4">
+        <div class="col s12 m4" th:if="${temProdutoComEstoqueBaixo}">
           <div class="icon-block">
-            <a th:href="@{/cliente/lista}"><h2 class="center light-blue-text"><i class="material-icons">people_outline</i></h2>
-            <h6 class="center">Os que mais compram</h6></a>
+            <a th:href="@{/produto/estoqueBaixo}"><h2 class="center light-blue-text"><i class="material-icons">error_outline</i></h2>
+            <h6 class="center">Produtos com baixa quantidade</h6></a>
           </div>
         </div>
       </div>
