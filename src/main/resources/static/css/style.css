@@ -41,3 +41,6 @@ main {
 .textoDeMensagensDevalidacao{
     color: darkred;
 }
+.dinoErro{
+    width: 90px;
+}
