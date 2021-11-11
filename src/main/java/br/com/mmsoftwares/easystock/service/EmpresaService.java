@@ -1,6 +1,6 @@
 package br.com.mmsoftwares.easystock.service;
 
-import br.com.mmsoftwares.easystock.dao.IEmpresaDao;
+import br.com.mmsoftwares.easystock.repository.IEmpresaDao;
 import br.com.mmsoftwares.easystock.model.Empresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

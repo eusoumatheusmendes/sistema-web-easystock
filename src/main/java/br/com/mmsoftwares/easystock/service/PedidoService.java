@@ -1,6 +1,6 @@
 package br.com.mmsoftwares.easystock.service;
 
-import br.com.mmsoftwares.easystock.dao.IPedidoDao;
+import br.com.mmsoftwares.easystock.repository.IPedidoDao;
 import br.com.mmsoftwares.easystock.model.Pedido;
 import br.com.mmsoftwares.easystock.model.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
